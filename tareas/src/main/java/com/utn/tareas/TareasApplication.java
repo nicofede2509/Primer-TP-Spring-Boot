@@ -2,7 +2,6 @@ package com.utn.tareas;
 
 import com.utn.tareas.model.Prioridad;
 import com.utn.tareas.repository.TareaRepository;
-import com.utn.tareas.service.MensajeDevService;
 import com.utn.tareas.service.MensajeService;
 import com.utn.tareas.service.TareaService;
 import org.springframework.beans.factory.annotation.Autowired;
