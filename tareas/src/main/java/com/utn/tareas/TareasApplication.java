@@ -11,11 +11,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class TareasApplication implements CommandLineRunner {
-    @Autowired
-    private TareaService tareaService;
 
-    @Autowired
-    private TareaRepository tareaRepository;
+    private final TareaService tareaService;
+
+    private final TareaRepository tareaRepository;
 
     @Autowired
     MensajeService mensajeService;
