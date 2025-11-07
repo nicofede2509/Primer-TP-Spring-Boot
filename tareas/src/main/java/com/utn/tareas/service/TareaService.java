@@ -68,16 +68,21 @@ public class TareaService {
         }
     }
 
-    public void obtenerEstadisticas(){
-        List<Tarea> todasLasTareas = tareaRepository.obtenerTareas();
-        int tareasTotales = todasLasTareas.size();
-        int tareasPendientes = Math.toIntExact(todasLasTareas.stream().
-                filter(tarea -> !tarea.isCompletada()).count());
-        int tareasCompletas = Math.toIntExact(todasLasTareas.stream().
-                filter(Tarea::isCompletada).count());
-        System.out.println("La cantidad de tareas es de: " + tareasTotales +
-                ", la cantidad de tareas pendientes es de: " + tareasPendientes +
-                " y la cantidad de tareas completas es de: " + tareasCompletas);
+    public void mostrarEstadisticas() throws IllegalAccessException{
+        if(mostrarEstadisticas){
+            List<Tarea> todasLasTareas = tareaRepository.obtenerTareas();
+            int tareasTotales = todasLasTareas.size();
+            int tareasPendientes = Math.toIntExact(todasLasTareas.stream().
+                    filter(tarea -> !tarea.isCompletada()).count());
+            int tareasCompletas = Math.toIntExact(todasLasTareas.stream().
+                    filter(Tarea::isCompletada).count());
+            System.out.println("La cantidad de tareas es de: " + tareasTotales +
+                    ", la cantidad de tareas pendientes es de: " + tareasPendientes +
+                    " y la cantidad de tareas completas es de: " + tareasCompletas);
+        } else {
+            throw new IllegalAccessException("Acceso inválido.");
+        }
+
     }
 
     public void mostrarConfiguraciones(){

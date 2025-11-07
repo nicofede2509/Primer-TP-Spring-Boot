@@ -17,6 +17,9 @@ public class TareasApplication implements CommandLineRunner {
 
     @Autowired
     private TareaRepository tareaRepository;
+
+    @Autowired
+    MensajeService mensajeService;
     public TareasApplication(TareaRepository tr, TareaService ts){
         this.tareaRepository = tr;
         this.tareaService = ts;
@@ -27,22 +30,27 @@ public class TareasApplication implements CommandLineRunner {
     }
     @Override
     public void run(String... args) {
-        MensajeService mensajeService = new MensajeDevService();
-        System.out.println("----------------------------------------------------------------------------------");
-        System.out.println(mensajeService.mostrarBienvenida());
-        System.out.println("----------------------------------------------------------------------------------");
-        tareaService.mostrarConfiguraciones();
-        System.out.println("----------------------------------------------------------------------------------");
-        System.out.println(tareaRepository.obtenerTareas());
-        System.out.println("----------------------------------------------------------------------------------");
-        tareaService.agregarTarea("Modificar Front end", Prioridad.ALTA);
-        System.out.println("----------------------------------------------------------------------------------");
-        tareaService.marcarTareaCompleta(3L);
-        System.out.println("----------------------------------------------------------------------------------");
-        tareaService.obtenerEstadisticas();
-        System.out.println("----------------------------------------------------------------------------------");
-        System.out.println(tareaService.listarTareasCompletadas());
-        System.out.println("----------------------------------------------------------------------------------");
-        System.out.println(mensajeService.mostrarDespedida());
+
+        try {
+            System.out.println("----------------------------------------------------------------------------------");
+            System.out.println(mensajeService.mostrarBienvenida());
+            System.out.println("----------------------------------------------------------------------------------");
+            tareaService.mostrarConfiguraciones();
+            System.out.println("----------------------------------------------------------------------------------");
+            System.out.println(tareaRepository.obtenerTareas());
+            System.out.println("----------------------------------------------------------------------------------");
+            tareaService.agregarTarea("Modificar Front end", Prioridad.ALTA);
+            System.out.println("----------------------------------------------------------------------------------");
+            tareaService.marcarTareaCompleta(3L);
+            System.out.println("----------------------------------------------------------------------------------");
+            tareaService.mostrarEstadisticas();
+            System.out.println("----------------------------------------------------------------------------------");
+            System.out.println(tareaService.listarTareasCompletadas());
+            System.out.println("----------------------------------------------------------------------------------");
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+        }finally {
+            System.out.println(mensajeService.mostrarDespedida());
+        }
     }
 }
