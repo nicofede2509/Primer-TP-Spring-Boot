@@ -4,11 +4,11 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
-@Profile("prov")
+@Profile("prod")
 public class MensajeProdService implements MensajeService{
     @Override
     public String mostrarBienvenida() {
-        return "Bienvenido al espacio de produccion";
+        return "Bienvenido al espacio de producción";
     }
 
     @Override

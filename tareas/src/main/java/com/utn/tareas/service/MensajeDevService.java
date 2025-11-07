@@ -9,11 +9,11 @@ public class MensajeDevService implements MensajeService{
 
     @Override
     public String mostrarBienvenida() {
-        return "Usted ingreso al ambiente de development";
+        return "Usted ingresó al ambiente de development";
     }
 
     @Override
     public String mostrarDespedida() {
-        return "Usted salio del espacio de development";
+        return "Usted salió del espacio de development";
     }
 }
